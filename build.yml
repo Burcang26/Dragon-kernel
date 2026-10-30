@@ -28,16 +28,16 @@ jobs:
           export ARCH=arm64
           make O=out gale_defconfig
           make O=out ARCH=arm64 CC=clang -j$(nproc)
-
-      - name: Bikin Zip Flashable
-        run: |
+          
+      - name: Dragon
+        run: 
           git clone https://github.com/osm0sis/AnyKernel3.git -b master --depth=1
           cp out/arch/arm64/boot/Image.gz AnyKernel3/
           cd AnyKernel3
           zip -r9 ../gale-kernel-$(date +%d%m%y).zip * -x .git
           
-      - name: Upload Hasil
+      - name: dragon
         uses: actions/upload-artifact@v4
         with:
-          name: deragon
+          name: derago
           path: *.zip
